@@ -1,45 +1,54 @@
-const Navbar = () => {
-  const total = 25000
-  const token = false
+// src/components/Navbar.jsx
+import { Link } from "react-router-dom"
 
+const Navbar = ({ totalPrecio = 0 }) => {
   return (
     <nav style={{
-      backgroundColor: '#1a1a1a',
-      padding: '10px 20px',
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center'
+      backgroundColor: "#1a1a2e",
+      padding: "12px 24px",
+      display: "flex",
+      alignItems: "center",
+      gap: "20px",
+      flexWrap: "wrap"
     }}>
+      <Link
+        to="/"
+        style={{ color: "white", textDecoration: "none", fontWeight: "bold", fontSize: "18px" }}
+      >
+        🍕 Mamma Mía
+      </Link>
 
-      <span style={{ color: 'white', fontWeight: 'bold', fontSize: '18px' }}>
-        Pizzería Mamma Mia!
-      </span>
+      <Link to="/" style={{ color: "#ccc", textDecoration: "none" }}>
+        Home
+      </Link>
 
-      <div style={{ display: 'flex', gap: '8px' }}>
+      <Link to="/register" style={{ color: "#ccc", textDecoration: "none" }}>
+        Registro
+      </Link>
 
-        {/* Botón Home — SIEMPRE visible */}
-        <button>🍕 Home</button>
+      <Link to="/login" style={{ color: "#ccc", textDecoration: "none" }}>
+        Login
+      </Link>
 
-        {/* Botones que dependen del token */}
-        {token ? (
-          <>
-            <button>🔓 Profile</button>
-            <button>🔒 Logout</button>
-          </>
-        ) : (
-          <>
-            <button>🔐 Login</button>
-            <button>🔐 Register</button>
-          </>
-        )}
+      <Link to="/profile" style={{ color: "#ccc", textDecoration: "none" }}>
+        Perfil
+      </Link>
 
-      </div>
-
-      {/* Botón Total — SIEMPRE visible */}
-      <button>
-        🛒 Total: ${total.toLocaleString('es-CL')}
-      </button>
-
+      {/* El botón del carrito redirige a /cart */}
+      <Link
+        to="/cart"
+        style={{
+          marginLeft: "auto",
+          backgroundColor: "#e94560",
+          color: "white",
+          padding: "8px 16px",
+          borderRadius: "4px",
+          textDecoration: "none",
+          fontWeight: "bold"
+        }}
+      >
+        🛒 Total: ${totalPrecio.toLocaleString("es-CL")}
+      </Link>
     </nav>
   )
 }

@@ -1,18 +1,35 @@
-import Footer from "./components/Footer"
+// src/App.jsx
+import { Routes, Route } from "react-router-dom"
+
+// Componentes globales (siempre visibles)
 import Navbar from "./components/Navbar"
-// import Pizza from "./components/Pizza" Descomentar para ver
-import Home from "./components/Home"
-// import LoginPage from "./components/Login"
-// import RegisterPage from "./components/Register"
+import Footer from "./components/Footer"
+
+// Páginas (desde /pages)
+import Home from "./pages/Home"
+import Register from "./pages/Register"
+import Login from "./pages/Login"
+import Cart from "./pages/Cart"
+import Pizza from "./pages/Pizza"
+import Profile from "./pages/Profile"
+import NotFound from "./pages/NotFound"
 
 const App = () => {
   return (
     <div>
-      <Navbar />
-      {/* <Pizza /> */}
-      <Home />
-      {/* <RegisterPage /> */}
-      {/* <LoginPage /> */}
+      <Navbar totalPrecio={0} />
+
+      <Routes>
+        <Route path="/"           element={<Home />} />
+        <Route path="/register"   element={<Register />} />
+        <Route path="/login"      element={<Login />} />
+        <Route path="/cart"       element={<Cart />} />
+        <Route path="/pizza/p001" element={<Pizza />} />
+        <Route path="/profile"    element={<Profile />} />
+        <Route path="/404"        element={<NotFound />} />
+        <Route path="*"           element={<NotFound />} />
+      </Routes>
+
       <Footer />
     </div>
   )
